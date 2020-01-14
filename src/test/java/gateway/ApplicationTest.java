@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
+import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertThat;
 
 
@@ -57,7 +58,7 @@ public class ApplicationTest {
         Cookies cookies = new Cookies(userNameCookie);
 
 
-        RestAssured.given()
+        given().log().all()
                 .cookies(cookies)
                 .when()
                 .get("/test").then().statusCode(200);
