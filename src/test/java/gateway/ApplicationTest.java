@@ -61,7 +61,7 @@ public class ApplicationTest {
         given().log().all()
                 .cookies(cookies)
                 .when()
-                .get("/test").then().statusCode(200);
+                .get("/test").then().log().body().statusCode(200);
 
 
     }
